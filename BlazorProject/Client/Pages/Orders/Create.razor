@@ -1,0 +1,156 @@
+﻿@page "/Orders/Create"
+@using BlazorProject.Shared.DTO;
+@using BlazorProject.Shared.Models;
+@inject HttpClient http
+@inject IToastService toastService
+@inject NavigationManager NavigationManager
+<div class="row bg-light shadow justify-content-center">
+    <div class="col-10">
+        <EditForm Model="@order" OnValidSubmit="SaveOrder">
+            <h3 class="text-center fw-bold text-secondary mb-4">Add Orders</h3>
+            <DataAnnotationsValidator />
+            <div class="form-group row mb-1">
+                <label class="col-form-label fw-bold text-secondary col-4 text-end" for="@order.CustomerID">Customer</label>
+                <div class="col-6">
+                    <InputSelect @bind-Value="order.CustomerID" class="form-select">
+                        <option value="">Select</option>
+                        @if (customers is not null)
+                        {
+                            foreach (var c in customers)
+                            {
+                                <option value="@c.CustomerID">@c.CustomerName</option>
+                            }
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(()=>order.CustomerID)" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label  fw-bold text-secondary col-4 text-end" for="@order.OrderDate">Order date</label>
+                <div class="col-6">
+                    <InputDate Type="InputDateType.Date" @bind-Value="@order.OrderDate" class="form-control" />
+                    <ValidationMessage For="@(()=>order.OrderDate)" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label fw-bold text-secondary col-4 text-end" for="@order.DeliveryDate">Delivery date</label>
+                <div class="col-6">
+                    <InputDate Type="InputDateType.Date" @bind-Value="@order.DeliveryDate" class="form-control" />
+                    <ValidationMessage For="@(()=>order.DeliveryDate)" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label  fw-bold text-secondary col-4 text-end" for="@order.Status">Status</label>
+                <div class="col-6">
+                    <InputSelect @bind-Value="@order.Status" class="form-select">
+                        @if (statusNames is not null)
+                        {
+                            foreach (var s in statusNames)
+                            {
+                                <option value="@s">@s</option>
+                            }
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(()=>order.DeliveryDate)" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+
+                <div class="col-11">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold text-secondary">Items</h4> <button @onclick="@AddItem" type="button" class="btn btn-outline-primary shadow btn-sm m-1"><i class="bi bi-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+         
+
+
+            @foreach (var oi in order.OrderItems)
+            {
+                int i = 1;
+                <div class="form-group row mb-1">
+                    <label class="col-form-label col-2 fw-bold text-secondary text-end" for="@order.CustomerID">Product</label>
+                    <div class="col-3">
+                        <InputSelect @bind-Value="oi.ProductID" class="form-select">
+                            <option value="">Select</option>
+                            @if (products is not null)
+                            {
+                                foreach (var p in products)
+                                {
+                                    <option value="@p.ProductID">@p.ProductName</option>
+                                }
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(()=>oi.ProductID)" class="text-danger" />
+                    </div>
+                    <label class="col-form-label col-2 fw-bold text-secondary text-end" for="@oi.Quantity">Quantity</label>
+                    <div class="col-3">
+                        <InputNumber @bind-Value="oi.Quantity" class="form-control" />
+
+                        <ValidationMessage For="@(()=>oi.Quantity)" class="text-danger" />
+                    </div>
+                    <div class="col-1">
+                        <button @onclick="@(()=>RemoveItem(i++))" type="button" class="btn btn-outline-danger shadow btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+
+
+
+                </div>
+            }
+            <div class="form-group row  mb-3 mt-2">
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between">
+                        <a href="/Orders/List" class="btn btn-link shadow">Back to list</a>
+                        <button type="submit" class="btn btn-outline-primary btn-sm shadow">Save the order</button>
+                    </div>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private OrderDTO order = new();
+    private Customer[]? customers;
+    private Product[]? products;
+    private string[]? statusNames;
+    protected override async Task OnInitializedAsync()
+    {
+        order.OrderItems.Add(new OrderItemDTO());
+        statusNames = Enum.GetNames<Status>();
+        customers = await http.GetFromJsonAsync<Customer[]>("api/Customers");
+        products = await http.GetFromJsonAsync<Product[]>("api/Products");
+    }
+    private void AddItem()
+    {
+        order.OrderItems.Add(new OrderItemDTO());
+    }
+    private void RemoveItem(int index)
+    {
+        if (order.OrderItems.Count > 1)
+            ((List<OrderItemDTO>)order.OrderItems).RemoveAt(index);
+    }
+
+
+
+    private async Task SaveOrder()
+    {
+        var response = await http.PostAsJsonAsync("api/Orders/DTO", order);
+        if (response.IsSuccessStatusCode)
+        {
+            toastService.ShowSuccess("Data saved successfully");
+            order = new();
+            order.OrderItems.Add(new OrderItemDTO());
+            NavigationManager.NavigateTo("/Orders/List");
+        }
+        else
+        {
+            toastService.ShowError("Failed to data.");
+        }
+        await Task.CompletedTask;
+    }
+}

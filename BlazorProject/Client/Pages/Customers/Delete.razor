@@ -1,0 +1,71 @@
+﻿@page "/Customers/Delete/{id:int}"
+@using BlazorProject.Shared.Models;
+@inject HttpClient http
+@inject IToastService toastService
+
+@inject NavigationManager NavigationManager
+<div class="row  bg-light shadow justify-content-center">
+    <div class="col-12">
+        @if (customer is null)
+        {
+            <div>Loading...</div>
+        }
+        else
+        {
+            <br />
+            <h3 class="text-center text-danger fw-bold mt-6">Are you sure to delete ?</h3>
+            <EditForm Model="@customer" OnValidSubmit="DeleteCustomer">
+                
+                <DataAnnotationsValidator />
+                <div class="form-group row mb-1">
+                    <label class="col-form-label col-6 fw-bold text-secondary text-end" for="@customer.CustomerName">Customer name :</label>
+                    <div class="col-6 text-start fw-bold mt-2">
+                        @customer.CustomerName 
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label class="col-form-label col-6 fw-bold text-secondary text-end" for="@customer.Address">Address :</label>
+                    <div class="col-6 text-start fw-bold mt-2">
+                        @customer.Address
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label class="col-form-label col-6 fw-bold text-secondary text-end" for="@customer.Email">Email :</label>
+                    <div class="col-6 text-start fw-bold mt-2">
+                        @customer.Email
+                    </div>
+                </div>
+                <div class="form-group row mb-5">
+
+                    <div class="col-8 offset-2 d-flex justify-content-between">
+                            <a href="/Customers/List" class="btn shadow btn-link">Back to list</a>
+                        <button type="submit" class="btn btn-outline-danger btn-sm shadow">Delete</button>
+
+                    </div>
+                </div>
+            </EditForm>
+        }
+    </div>
+    <div class="col-12">
+        
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private Customer? customer = default!;
+    protected override async Task OnInitializedAsync()
+    {
+        customer = await http.GetFromJsonAsync<Customer>($"api/Customers/{id}");
+    }
+    private async Task DeleteCustomer()
+    {
+        var respose = await http.DeleteAsync($"api/Customers/{id}");
+        if (respose.IsSuccessStatusCode)
+        {
+            toastService.ShowSuccess("Data deleted successsfully");
+            NavigationManager.NavigateTo("/Customers/List");
+        }
+    }
+}

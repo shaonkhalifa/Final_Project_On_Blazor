@@ -1,0 +1,43 @@
+﻿<div class="modal fade show" tabindex="-1" style="@DisplayStyle">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="btn-close" @onclick="@ModalCancel" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if(ModalContent is not null)
+                {
+                    @ModalContent
+                }
+                else
+                {
+                    <p>Dummy body.</p>
+                }
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="@ModalCancel">Cancel</button>
+                <button type="button" class="btn btn-primary" @onclick="@ModalOk">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string DisplayStyle { get; set; } = "display:block";
+    [Parameter]
+    public RenderFragment? ModalContent { get; set; }
+    [Parameter]
+    public string Title { get; set; } = "Modal Title";
+    [Parameter]
+    public EventCallback<bool> OnClose{ get; set; }
+    private async Task ModalOk()
+    {
+        await OnClose.InvokeAsync(true);
+    }
+    private async Task ModalCancel()
+    {
+        await OnClose.InvokeAsync(false);
+    }
+}

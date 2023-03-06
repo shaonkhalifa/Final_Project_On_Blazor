@@ -1,0 +1,64 @@
+﻿@page "/Customers/List"
+@using BlazorProject.Shared.DTO;
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize]
+<div class="row justify-content-center">
+    <div class="col-11">
+        <h3 class="text-center fw-bold text-secondary">Customers List</h3>
+        <div class="d-flex justify-content-end mb-2">
+            <a href="/Customers/Create" class="btn btn-outline-primary shadow-lg btn-sm"><i class="bi bi-plus"></i></a>
+        </div>
+        @if(customers is null)
+        {
+            <div>Loading...</div>
+        }
+        else
+        {
+            <table class="table table-bordered table-responsive-sm table-hover table-striped shadow">
+                <thead class="table-light">
+                    <tr>
+                        <th>Customer name</th>
+                        <th>Address</th>
+                        <th>E-mail</th>
+                        <th>...</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach(var c in customers)
+                    {
+                        <tr>
+                            <td>@c.CustomerName</td>
+                            <td>@c.Address</td>
+                            <td>@c.Email</td>
+                            <th>
+                                <a   class="btn btn-outline-success btn-sm shadow" href="/Customers/edit/@c.CustomerID"><i class="bi bi-pencil"></i></a>
+                                <a class="btn btn-danger shadow btn-sm @getDisabledClass(c.CanDelete)" href="/Customers/delete/@c.CustomerID"><i class="bi bi-trash"></i></a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+@inject HttpClient http
+@code {
+    private CustomerDTO[]? customers;
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await this.http.GetFromJsonAsync<CustomerDTO[]>("api/Customers/DTO");
+    }
+    public string getDisabledClass(bool canDelete)
+    {
+        return canDelete ? "" : "disabled";
+    }
+
+    //public async Task DeleteData(long id)
+    //{
+    //    bool result = await _empService.DeleteDataById(id);
+    //    empAllData = await _empService.GetAll();
+    //    StateHasChanged();
+    //}
+
+}

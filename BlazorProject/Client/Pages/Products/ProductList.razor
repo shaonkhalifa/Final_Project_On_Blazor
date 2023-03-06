@@ -1,0 +1,69 @@
+﻿@page "/Products/List"
+@attribute [Authorize]
+@using BlazorProject.Shared.Models;
+@using Microsoft.AspNetCore.Authorization;
+@inject HttpClient http
+@inject IToastService toastService
+<div class="row justify-content-center">
+    <div class="col-10 ">
+        <h3 class="text-center fw-bold text-secondary">Product List</h3>
+        <div class="d-flex justify-content-end mb-2">
+            <a class="btn btn-outline-primary shadow-lg btn-sm" href="/Products/Create"><i class="bi bi-plus"></i></a>
+        </div>
+        @if(products is null)
+        {
+            <div>Loading...</div>
+        }
+        else
+        {
+            <table class="table table-bordered table-striped table-responsive-sm table-hover shadow">
+                <thead class="table-light">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Available?</th>
+                        <th>...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var p in products)
+                    {
+                        <tr>
+                            <td width="70" height="50"><img src="/Uploads/@p.Picture" class="rounded  border-secondary " style="width:45px; border:solid;border-image-slice:fill;margin-left:4px;"  /></td>
+                            <td>@p.ProductName</td>
+                            <td>@p.Price.ToString("0.00")</td>
+                            <td>@(p.IsAvailable ? "Yes": "No")</td>
+                            <td width="100">
+                                <a class="btn btn-outline-success shadow-sm btn-sm" href="/Products/edit/@p.ProductID"><i class="bi bi-pencil"></i></a>
+                                <button @onclick="@( ()=>Delete(p.ProductID))" class="btn btn-outline-danger shadow-sm btn-sm"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+@code {
+    private Product[]? products;
+    protected override async Task OnInitializedAsync()
+    {
+        products = await http.GetFromJsonAsync<Product[]>("api/Products");
+    }
+    private async Task Delete(int id)
+    {
+        var response = await http.DeleteAsync($"api/Products/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            toastService.ShowSuccess("Data deleted successfully");
+            products = await http.GetFromJsonAsync<Product[]>("api/Products");
+            
+        }
+        else
+        {
+            toastService.ShowError("Failed to delete data.");
+        }
+    }
+}

@@ -1,0 +1,87 @@
+﻿@page "/Orders/List"
+@using BlazorProject.Shared.DTO;
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize]
+@inject HttpClient http
+@inject IToastService toastService
+@inject NavigationManager NavigationManager
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-center fw-bold text-secondary">Orders Lists</h3>
+        <div class="d-flex justify-content-end mb-2">
+            <a class="btn btn-outline-primary shadow-ld btn-sm" href="/Orders/Create"><i class="bi bi-plus"></i></a>
+        </div>
+        @if(orders is null)
+        {
+            <div>Loading..</div>
+        }
+        else
+        {
+            <table class="table table-bordered table-hover table-striped table-responsive-sm shadow">
+                <thead class="table-light">
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Customer</th>
+                        <th>Delivery date</th>
+                        <th>Status</th>
+                        <th>Items</th>
+                        <th>Order Value</th>
+                        <th>Actions</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var o in orders)
+                    {
+                        <tr>
+                            <td>@o.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td>@o.CustomerName</td>
+                            <td>@o.DeliveryDate?.ToString("yyyy-MM-dd")</td>
+                            <td>@o.Status</td>
+                            <td>@o.ItemCount</td>
+                            <td>@o.OrderValue.ToString("0.00")</td>
+                            
+                            <td>
+
+                                <a class="btn btn-outline-primary shadow btn-sm" href="/Orders/Edit/@o.OrderID"><i class="bi bi-pencil"></i></a>
+                                <button @onclick="@( ()=>Delete(o.OrderID))" class="btn btn-outline-danger shadow-sm btn-sm"><i class="bi bi-trash"></i></button>
+                            </td>
+                            <td>
+                                <a class="btn btn-link" href="/Orders/Details/@o.OrderID"><i class="bi bi-info-circle"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+@code {
+    private OrderViewDTO[]? orders;
+    private OrderDTO[]? or;
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await http.GetFromJsonAsync<OrderViewDTO[]>("api/Orders/DTO");
+    }
+
+    private async Task Delete(int id)
+    {
+        var response = await http.DeleteAsync($"api/Orders/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            toastService.ShowSuccess("Data deleted successfully");
+            or = await http.GetFromJsonAsync<OrderDTO[]>("api/Orders");
+            //await OnInitializedAsync();
+           // orders = orders.Where(c => c.OrderID != id).ToList();
+            orders = await http.GetFromJsonAsync<OrderViewDTO[]>("api/Orders/DTO");
+        }
+        else
+        {
+            toastService.ShowError("Failed to delete data.");
+        }
+        //StateHasChanged();
+        //NavigationManager.NavigateTo("/Orders/List", true);
+    }
+}
+

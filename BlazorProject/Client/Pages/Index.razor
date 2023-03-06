@@ -1,0 +1,24 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Authorization;
+@attribute [Authorize]
+@inject NavigationManager NavigationManager
+<PageTitle>Index</PageTitle>
+
+<h1 class="text-center fw-bold text-secondary">Master Detail</h1>
+
+<h2 class="text-center  text-secondary">Project For Midterm Exam </h2>
+<h3 class="text-center  text-secondary">IsDB-BISEW IT Scholarship Programme</h3>
+
+<SurveyPrompt Title="Master Detail CRUD Operations" />
+
+@*@code {
+    
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.NavigateTo("");
+    }
+    
+}*@
+
+
+

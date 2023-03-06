@@ -1,0 +1,16 @@
+﻿<div class="alert alert-secondary mt-4">
+    <span class="oi oi-pencil me-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+
+    <span class="text-nowrap">
+        Please make a tour into
+        <a target="_blank" class="font-weight-bold link-dark" href="">Application</a>
+    </span>
+    and give me a feedback.
+</div>
+
+@code {
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string? Title { get; set; }
+}
