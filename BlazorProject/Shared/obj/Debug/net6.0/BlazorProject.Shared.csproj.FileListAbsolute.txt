@@ -10,3 +10,15 @@ C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BalzorProject\BlazorProject\Blazo
 C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BalzorProject\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\refint\BlazorProject.Shared.dll
 C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BalzorProject\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.pdb
 C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BalzorProject\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\ref\BlazorProject.Shared.dll
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\bin\Debug\net6.0\BlazorProject.Shared.deps.json
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\bin\Debug\net6.0\BlazorProject.Shared.dll
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\bin\Debug\net6.0\BlazorProject.Shared.pdb
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.csproj.AssemblyReference.cache
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.AssemblyInfoInputs.cache
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.AssemblyInfo.cs
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.csproj.CoreCompileInputs.cache
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.dll
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\refint\BlazorProject.Shared.dll
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\BlazorProject.Shared.pdb
+C:\Users\mdsha\OneDrive\Desktop\Blazor Project\BL\BlazorProject\BlazorProject\Shared\obj\Debug\net6.0\ref\BlazorProject.Shared.dll

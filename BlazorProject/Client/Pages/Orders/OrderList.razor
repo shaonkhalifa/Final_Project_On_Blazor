@@ -70,7 +70,7 @@
         var response = await http.DeleteAsync($"api/Orders/{id}");
         if (response.IsSuccessStatusCode)
         {
-            toastService.ShowSuccess("Data deleted successfully");
+            toastService.ShowWarning("Data deleted successfully");
             or = await http.GetFromJsonAsync<OrderDTO[]>("api/Orders");
             //await OnInitializedAsync();
            // orders = orders.Where(c => c.OrderID != id).ToList();

@@ -57,7 +57,7 @@
         var response = await http.DeleteAsync($"api/Products/{id}");
         if (response.IsSuccessStatusCode)
         {
-            toastService.ShowSuccess("Data deleted successfully");
+            toastService.ShowWarning("Data deleted successfully");
             products = await http.GetFromJsonAsync<Product[]>("api/Products");
             
         }

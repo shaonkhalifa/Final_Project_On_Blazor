@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\0vhey0uq.png",
+      "PackagePath": "staticwebassets\\Uploads\\0vhey0uq.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\1sqvyi54.png",
+      "PackagePath": "staticwebassets\\Uploads\\1sqvyi54.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\4b1lu5gm.ico",
+      "PackagePath": "staticwebassets\\Uploads\\4b1lu5gm.ico"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\af2vpgoy.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\af2vpgoy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\aqoyxhtk.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\aqoyxhtk.jpg"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\dnmvgibd.png",
+      "PackagePath": "staticwebassets\\Uploads\\dnmvgibd.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\dsn5wobs.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\dsn5wobs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\fyjay23y.png",
+      "PackagePath": "staticwebassets\\Uploads\\fyjay23y.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\images.png",
+      "PackagePath": "staticwebassets\\Uploads\\images.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\k1npho22.png",
+      "PackagePath": "staticwebassets\\Uploads\\k1npho22.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\l40fn3k0.png",
+      "PackagePath": "staticwebassets\\Uploads\\l40fn3k0.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\lfk0i24f.png",
+      "PackagePath": "staticwebassets\\Uploads\\lfk0i24f.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\uhvev5v2.png",
+      "PackagePath": "staticwebassets\\Uploads\\uhvev5v2.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\xnxzmymd.png",
+      "PackagePath": "staticwebassets\\Uploads\\xnxzmymd.png"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\xqwofble.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\xqwofble.jpg"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\xxixd0id.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\xxixd0id.jpg"
+    },
+    {
+      "Id": "C:\\Users\\mdsha\\OneDrive\\Desktop\\Blazor Project\\BL\\BlazorProject\\BlazorProject\\Server\\wwwroot\\Uploads\\zn2yfvep.ico",
+      "PackagePath": "staticwebassets\\Uploads\\zn2yfvep.ico"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BlazorProject.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.BlazorProject.Server.props",
+      "PackagePath": "build\\BlazorProject.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorProject.Server.props",
+      "PackagePath": "buildMultiTargeting\\BlazorProject.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.BlazorProject.Server.props",
+      "PackagePath": "buildTransitive\\BlazorProject.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

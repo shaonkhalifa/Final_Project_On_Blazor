@@ -64,7 +64,7 @@
         var respose = await http.DeleteAsync($"api/Customers/{id}");
         if (respose.IsSuccessStatusCode)
         {
-            toastService.ShowSuccess("Data deleted successsfully");
+            toastService.ShowWarning("Data deleted successsfully");
             NavigationManager.NavigateTo("/Customers/List");
         }
     }
